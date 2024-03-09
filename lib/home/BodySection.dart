@@ -1,6 +1,8 @@
 import 'package:examl3gl/pages/Jauge.dart';
 import 'package:examl3gl/pages/detailsButton.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class BodySection extends StatelessWidget {
   const BodySection({Key? key});
@@ -78,8 +80,8 @@ class BodySection extends StatelessWidget {
                 Text('Details', style: TextStyle( color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,)),
-                SizedBox(height: 20), // Espacement entre les textes
-                newMethod(context), // Utilisez la méthode ici
+                SizedBox(height: 20), 
+                newMethod(context), 
               ],
 ),
 
@@ -91,6 +93,7 @@ class BodySection extends StatelessWidget {
   Widget newMethod(BuildContext context) {
   return IconButton(
     onPressed: () {
+     // fetchData();
       // Navigation vers la prochaine page
       Navigator.push(
         context,
@@ -102,4 +105,16 @@ class BodySection extends StatelessWidget {
     iconSize: 30,
   );
 }
+  /* Future<void> fetchData() async {
+    final response = await http.get(Uri.parse('http://api.openweathermap.org/geo/1.0/direct?q=France&limit=5&appid=5dbe3c91e7ed9661d3d77dba4df223cb'));
+    if (response.statusCode == 200) {
+     setState(() {
+        data = json.decode(response.body)['title'];
+      });
+      print(response.body);
+    } 
+    else{
+      print(response.statusCode);
+    }
+  }*/
 }
